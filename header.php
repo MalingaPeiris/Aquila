@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head(); ?>
 </head>
-<body <?php body_class( 'hello-class' )?> </body>>
+<body>
 
 <?php wp_body_open(); ?>
 
