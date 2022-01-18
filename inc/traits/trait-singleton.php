@@ -9,7 +9,7 @@ trait singleton{
     public function clone(){
 
     }
-    fnila public static function get_instance(){
+    final public static function get_instance(){
         static $instance =[];
          $called_class = get_called_class();
 
