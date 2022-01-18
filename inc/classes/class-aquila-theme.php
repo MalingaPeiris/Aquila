@@ -15,6 +15,7 @@ class AQUILA_THEME{
     protected function __construct(){
         //load classes
         Assets::get_instance();
+        Menus::get_instance();
 
         $this->setup_hooks();
     }
@@ -57,7 +58,7 @@ class AQUILA_THEME{
             'style',
     ]);
 
-    add_editor_styles();
+    
 
     add_theme_support('wp-block-styles');
 
