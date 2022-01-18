@@ -13,12 +13,15 @@ class AQUILA_THEME{
     use Singleton;
 
     protected function __construct(){
-
-        wp_die('hello world');
         //load classes
+        Assets::get_instance();
+
+        $this->setup_hooks();
     }
 
-    protected function set_hooks(){
-        //actions and filters
+    protected function setup_hooks(){
+        //actions
     }
+
+    
 }
