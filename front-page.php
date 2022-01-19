@@ -1,14 +1,14 @@
 <?php
 /**
  * front page template
- * 
+ *
  * @package aquila
  */
 get_header();
 ?>
 
- <div>Front Page</div>
+    <div>Front Page</div>
 
- <?php
- get_footer();
- ?>
+<?php
+get_footer();
+?>
