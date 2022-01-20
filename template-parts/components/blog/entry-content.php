@@ -24,7 +24,9 @@
             )
         );
     }else{
+        //if it is not a single page post
         aquila_the_excerpt(150);
+        echo aquila_excerpt_more();
     }
     ?>
 </div>

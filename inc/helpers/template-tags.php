@@ -63,7 +63,7 @@ function aquila_posted_on()
 }
 
 
-//author of the post
+//author 
 function aquila_posted_by()
 {
     $byline = sprintf(
@@ -76,16 +76,31 @@ function aquila_posted_by()
 
 
 //trim the content 
-function aquila_the_excerpt( $trim_character_count ) {
-    $excerpt = wp_strip_all_tags( get_the_excerpt() ); 
-   
-	if (strlen($excerpt) < $trim_character_count ) {
-		the_excerpt();
-		return;
-	}
+function aquila_the_excerpt($trim_character_count)
+{
+    $excerpt = wp_strip_all_tags(get_the_excerpt());
 
-	$excerpt = substr( $excerpt, 0, $trim_character_count );
-	$excerpt = substr( $excerpt, 0, strrpos( $excerpt, ' ' ) );
-	echo $excerpt . ' [...]';
+    if (strlen($excerpt) < $trim_character_count) {
+        the_excerpt();
+        return;
+    }
+
+    $excerpt = substr($excerpt, 0, $trim_character_count);
+    $excerpt = substr($excerpt, 0, strrpos($excerpt, ' '));
+    echo $excerpt . ' [...]';
 }
 
+
+//read more button
+function aquila_excerpt_more($more = '')
+{
+    if (!is_single()) {
+        $more = sprintf(
+            '<button class="mt-4 btn btn-info"><a class="aquila-read-more text-white" href="%1$s">%2$s</a></button>',
+            get_permalink(get_the_ID()),
+            __('Read more', 'aquila')
+        );
+    }
+
+    return $more;
+}
