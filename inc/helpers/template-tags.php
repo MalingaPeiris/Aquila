@@ -5,7 +5,7 @@
  */
 
 
-function get_the_post_custom_thumbnail($post_id, $size = 'featured-large', $additional_attributes = [])
+function get_the_post_custom_thumbnail($post_id, $size = 'featured-thumbnail', $additional_attributes = [])
 {
     $custom_thumbnail = '';
 
@@ -33,5 +33,5 @@ function get_the_post_custom_thumbnail($post_id, $size = 'featured-large', $addi
 
 function the_post_custom_thumbnail($post_id, $size, $additional_attributes = [])
 {
-    echo get_the_post_custom_thumbnail($post_id, $size = 'featured-large', $additional_attributes);
+    echo get_the_post_custom_thumbnail($post_id, $size = 'featured-thumbnail', $additional_attributes);
 }
