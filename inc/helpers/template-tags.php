@@ -15,7 +15,7 @@ function get_the_post_custom_thumbnail($post_id, $size = 'featured-thumbnail', $
 
     if (has_post_thumbnail($post_id)) {
 
-        $default_attributes=[
+        $default_attributes = [
             'loading' => 'lazy'
         ];
 
@@ -60,4 +60,14 @@ function aquila_posted_on()
     );
 
     echo '<span class="posted-one tesxt-secandary">' . $posted_on . '</span>';
+}
+
+function aquila_posted_by()
+{
+    $byline = sprintf(
+        esc_html_x(' by %s', 'post author', 'aquila'),
+        '<span class="author vcard><a href="' . esc_url(get_author_posts_url(get_the_author_meta('ID'))) . '">' . esc_html(get_the_author()) . '</a></span>'
+    );
+
+    echo '<span class="byline text-secondary">' . $byline . '</span>';
 }
