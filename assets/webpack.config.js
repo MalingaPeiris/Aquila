@@ -1,9 +1,12 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const cssnano = require("cssnano");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
-const JS_DIR = path.resolve(__dirname, "/src/js");
-const IMG_DIR = path.resolve(__dirname, "/src/img");
+const JS_DIR = path.resolve(__dirname, "src/js");
+const IMG_DIR = path.resolve(__dirname, "src/img");
 const BUILD_DIR = path.resolve(__dirname, "build");
 
 const entry = {
@@ -28,7 +31,7 @@ const rules = [
   },
   {
     test: /\.(png|jpg|svg|jpeg|gif|ico)$/,
-    include: [JS_DIR],
+    include: [IMG_DIR],
     exclude: /node_modules/,
     use: [
       {
@@ -59,5 +62,20 @@ module.exports = (env, argv) => ({
   module: {
     rules: rules,
   },
+  optimization: {
+    minimizer: [
+      new OptimizeCssAssetsPlugin({
+        cssProcessor: cssnano,
+      }),
+      new UglifyJSPlugin({
+        cache: false,
+        parallel: true,
+        sourceMap: false,
+      }),
+    ],
+  },
   plugins: plugins(argv),
+  externals: {
+    jquery: "jQuery",
+  },
 });
