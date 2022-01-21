@@ -25,6 +25,7 @@ class Sidebars
     {
         //actions
         add_action('widgets_init', [$this, 'register_sidebars']);
+        add_action('widgets_init', [$this, 'register_clock_widget']);
     }
 
     public function register_sidebars(){
@@ -49,5 +50,8 @@ class Sidebars
         ]);
     }
 
+    function register_clock_widget(){
+        register_widget('AQUILA_THEME\Inc\Clock_Widget');
+    }
     
 }
