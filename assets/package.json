@@ -19,24 +19,27 @@
     "defaults"
   ],
   "dependencies": {
-    "@babel/core": "^7.16.10",
+    "sass": "^1.49.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
-    "pack-cli": "^1.4.5",
-    "web": "0.0.2",
-    "webpack": "^5.66.0"
-  },
-  "devDependencies": {
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
-    "cssnano": "^5.0.15",
+    "cssnano": "^5.0.16",
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.5.2",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "pack-cli": "^1.4.5",
+    "sass-loader": "^12.4.0",
+    "sass-mq": "^6.0.0",
     "style-loader": "^3.3.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
+    "web": "0.0.2",
+    "webpack": "^5.67.0",
     "webpack-cli": "^4.9.1"
   }
 }
