@@ -67,9 +67,13 @@ class AQUILA_THEME
         ]);
 
 
+        
+
         add_theme_support('wp-block-styles');
 
         add_theme_support('align-wide');
+
+        add_editor_style('assets/build/css/editor.css');
 
         global $content_width;
         if (!isset($content_width)) {
