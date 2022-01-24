@@ -47,12 +47,13 @@ function aquila_get_theme_instance()
 
 aquila_get_theme_instance();
 
-function aquila_enqueue_scripts()
+//remove guternberg block librarycss drom landing on the frontend
+/**function ebayads_remove_block_styles()
 {
-
-
+    wp_dequeue_style('wp-blocl-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('wp-block-style');
 }
 
-add_action('wp_enqueue_scripts', 'aquila_enqueue_scripts')
-
-?>
+add_action('wp_enqueue_scripts', 'ebayads_remove_block_styles', 100);
+**/
