@@ -32,37 +32,58 @@ class Block_Patterns
     public function register_block_patterns()
     {
         if (function_exists('register_block_pattern')) {
+
+            /**
+             * cover pattern
+             */
+            $cover_content = $this->get_pattern_content('template-parts/patterns/cover');
+
             register_block_pattern(
                 'aquila/cover',
                 [
                     'title' => __('Aquila Cover', 'aquila'),
                     'description' => __('Aquila Cover Block with image and text', 'aquila'),
                     'categories' => ['cover'],
-                    'content' => '<!-- wp:cover {"url":"http://localhost/wordpress/wp-content/uploads/2022/01/anonymous-Tesla-elon-musk.jpg","id":76,"align":"full","className":"aquila-cover"} -->
-                    <div class="wp-block-cover alignfull has-background-dim aquila-cover"><img class="wp-block-cover__image-background wp-image-76" alt="" src="http://localhost/wordpress/wp-content/uploads/2022/01/anonymous-Tesla-elon-musk.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1} -->
-                    <h1 class="has-text-align-center"><strong>We do not forget we do not forgive </strong></h1>
-                    <!-- /wp:heading -->
-                    
-                    <!-- wp:paragraph {"align":"center","textColor":"cyan-bluish-gray"} -->
-                    <p class="has-text-align-center has-cyan-bluish-gray-color has-text-color">Hello Planet Earth</p>
-                    <!-- /wp:paragraph -->
-                    
-                    <!-- wp:buttons {"contentJustification":"center"} -->
-                    <div class="wp-block-buttons is-content-justification-center"><!-- wp:button {"className":"is-style-outline"} -->
-                    <div class="wp-block-button is-style-outline"><a class="wp-block-button__link">Blogs</a></div>
-                    <!-- /wp:button --></div>
-                    <!-- /wp:buttons --></div></div>
-                    <!-- /wp:cover -->',
+                    'content' => $cover_content,
+                ]
+            );
+
+
+            /**
+             * two column pattern
+             */
+            $two_columns_content = $this->get_pattern_content('template-parts/patterns/two-columns');
+
+            register_block_pattern(
+                'aquila/two-columns',
+                [
+                    'title' => __('Aquila Two Column', 'aquila'),
+                    'description' => __('Aquila two column with heading and text', 'aquila'),
+                    'categories' => ['columns'],
+                    'content' => $two_columns_content,
                 ]
             );
         }
+    }
+
+    public function get_pattern_content($template_path)
+    {
+        ob_start();
+
+        get_template_part($template_path);
+
+        $pattern_content = ob_get_contents();
+
+        ob_end_clean();
+
+        return $pattern_content;
     }
 
     public function register_block_pattern_category()
     {
         $pattern_categories = [
             'cover' => __('Cover', 'aquila'),
-            'carousel' => __('Carouselr', 'aquila'),
+            'columns' => __('Columns', 'aquila'),
         ];
         if (!empty($pattern_categories) && is_array($pattern_categories)) {
             foreach ($pattern_categories as $pattern_category => $pattern_category_label) {
