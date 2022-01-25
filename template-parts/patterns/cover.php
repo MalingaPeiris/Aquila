@@ -5,11 +5,12 @@
  * 
  * @package aquila
  */
+$cover=sprintf(esc_url(AQUILA_BUILD_IMG_URI . '/patterns/anonymous-Tesla-elon-musk.jpg'))
 
 ?>
 
-<!-- wp:cover {"url":"http://localhost/wordpress/wp-content/uploads/2022/01/anonymous-Tesla-elon-musk.jpg","id":76,"align":"full","className":"aquila-cover"} -->
-<div class="wp-block-cover alignfull has-background-dim aquila-cover"><img class="wp-block-cover__image-background wp-image-76" alt="" src="http://localhost/wordpress/wp-content/uploads/2022/01/anonymous-Tesla-elon-musk.jpg" data-object-fit="cover" />
+<!-- wp:cover {"url":"<?php esc_attr($cover);?>","id":76,"minHeight":640,"align":"full","className":"aquila-cover"} -->
+<div class="wp-block-cover alignfull has-background-dim aquila-cover" style="min-height:640px"><img class="wp-block-cover__image-background wp-image-76" alt="" src="(<?php esc_attr($cover);?>)" data-object-fit="cover" />
     <div class="wp-block-cover__inner-container">
         <!-- wp:heading {"textAlign":"center","level":1} -->
         <h1 class="has-text-align-center"><strong>We do not forget we do not forgive </strong></h1>
