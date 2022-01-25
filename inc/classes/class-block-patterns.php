@@ -26,6 +26,7 @@ class Block_Patterns
     {
         //actions
         add_action('init', [$this, 'register_block_patterns']);
+        add_action('init', [$this, 'register_block_pattern_category']);
     }
 
     public function register_block_patterns()
@@ -36,8 +37,9 @@ class Block_Patterns
                 [
                     'title' => __('Aquila Cover', 'aquila'),
                     'description' => __('Aquila Cover Block with image and text', 'aquila'),
-                    'content' => '<!-- wp:cover {"url":"http://localhost/wordpress/wp-content/uploads/2022/01/anonymous-Tesla-elon-musk.jpg","id":76,"align":"full"} -->
-                    <div class="wp-block-cover alignfull has-background-dim"><img class="wp-block-cover__image-background wp-image-76" alt="" src="http://localhost/wordpress/wp-content/uploads/2022/01/anonymous-Tesla-elon-musk.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1} -->
+                    'categories' => ['cover'],
+                    'content' => '<!-- wp:cover {"url":"http://localhost/wordpress/wp-content/uploads/2022/01/anonymous-Tesla-elon-musk.jpg","id":76,"align":"full","className":"aquila-cover"} -->
+                    <div class="wp-block-cover alignfull has-background-dim aquila-cover"><img class="wp-block-cover__image-background wp-image-76" alt="" src="http://localhost/wordpress/wp-content/uploads/2022/01/anonymous-Tesla-elon-musk.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1} -->
                     <h1 class="has-text-align-center"><strong>We do not forget we do not forgive </strong></h1>
                     <!-- /wp:heading -->
                     
@@ -53,6 +55,22 @@ class Block_Patterns
                     <!-- /wp:cover -->',
                 ]
             );
+        }
+    }
+
+    public function register_block_pattern_category()
+    {
+        $pattern_categories = [
+            'cover' => __('Cover', 'aquila'),
+            'carousel' => __('Carouselr', 'aquila'),
+        ];
+        if (!empty($pattern_categories) && is_array($pattern_categories)) {
+            foreach ($pattern_categories as $pattern_category => $pattern_category_label) {
+                register_block_pattern_category(
+                    $pattern_category,
+                    ['label' => $pattern_category_label]
+                );
+            }
         }
     }
 }

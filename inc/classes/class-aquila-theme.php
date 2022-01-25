@@ -76,6 +76,9 @@ class AQUILA_THEME
 
         add_editor_style('assets/build/css/editor.css');
 
+        //remove core block patterns 
+        remove_theme_support('core-block-patterns');
+
         global $content_width;
         if (!isset($content_width)) {
             $content_width = 1240;
