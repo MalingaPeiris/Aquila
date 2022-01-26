@@ -54,4 +54,49 @@ class Assets
         wp_enqueue_script('bootstrap-js');
 
     }
+
+    public function enqueue_editor_assets()
+    {
+        $assets_config_file = sprintf('%s/assets.php', AQUILA_BUILD_PATH);
+
+        if (!file_exists($assets_config_file)) {
+            return;
+        }
+
+        $assets_config = require_once $assets_config_file;
+
+        if (empty($assets_config['js/editor.js'])) {
+            return;
+        }
+
+        $editor_assest = $assets_config['js/editor.js'];
+        $js_dependencies = (!empty($editor_assest['dependencies'])) ? $editor_assest['dependencies'] : [];
+        $version = (!empty($editor_assest['version'])) ? $editor_assest['version'] : filemtime($assets_config_file);
+
+        //theme gutenberg block JS 
+        if (is_admin()) {
+            wp_enqueue_script(
+                'aquila-block-js',
+                AQUILA_BUILD_JS_URI . './blocks.js',
+                $js_dependencies,
+                $version,
+                true
+            );
+        }
+
+
+        //thene gutenberg blocks css
+        $css_dependencies = [
+            'wp-block-library-theme',
+            'wp-block-library',
+        ];
+
+        wp_enqueue_style(
+            'quila-blocks-css',
+            AQUILA_BUILD_CSS_URI . '/blocks.css',
+            $css_dependencies,
+            filemtime(AQUILA_BUILD_CSS_DIR_PATH . '/blocks.css'),
+            'all',
+        );
+    }
 }
