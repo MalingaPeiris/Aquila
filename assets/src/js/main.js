@@ -1,4 +1,4 @@
-import "./clock";
+import './clock';
 
 //Styles
 import '../sass/main.scss';

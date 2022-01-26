@@ -1,4 +1,4 @@
 import '../sass/blocks.scss';
 
-//blocks 
+//blocks
 import './gutenberg/blocks/heading-with-icon';
