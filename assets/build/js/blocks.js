@@ -2,6 +2,47 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/gutenberg/blocks/heading-with-icon/edit.js":
+/*!***********************************************************!*\
+  !*** ./src/js/gutenberg/blocks/heading-with-icon/edit.js ***!
+  \***********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var Edit = function Edit(_ref) {
+  var className = _ref.className,
+      attributes = _ref.attributes,
+      setAttributes = _ref.setAttributes;
+  var content = attributes.content;
+  console.warn('edit', content);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "aquila-icon-heading"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "aquila-icon-heading__heading"
+  }), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText, {
+    tagName: "h4",
+    className: className,
+    value: content,
+    onChange: function onChange(content) {
+      return setAttributes({
+        content: content
+      });
+    },
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading...", "aquila")
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
+
+/***/ }),
+
 /***/ "./src/js/gutenberg/blocks/heading-with-icon/index.js":
 /*!************************************************************!*\
   !*** ./src/js/gutenberg/blocks/heading-with-icon/index.js ***!
@@ -13,19 +54,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/js/gutenberg/blocks/heading-with-icon/edit.js");
+
+
 
  // Register the block
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)("aquila-blocks/heading", {
   title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Heading with Icon", "aquila"),
-  icon: 'admin-customizer',
-  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Add heading and select icon', 'aquila'),
-  category: 'aquila',
-  edit: function edit() {
-    return /*#__PURE__*/React.createElement("p", null, " Hello world (from the editor)");
+  icon: "admin-customizer",
+  description: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Add heading and select icon", "aquila"),
+  category: "aquila",
+  attributes: {
+    option: {
+      type: "string",
+      default: "dos"
+    },
+    content: {
+      type: "string",
+      source: "html",
+      selector: "h4",
+      default: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Dos", "aquila")
+    }
   },
-  save: function save() {
-    return /*#__PURE__*/React.createElement("p", null, " Hola mundo (from the frontend) ");
+  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+  save: function save(_ref) {
+    var content = _ref.attributes.content;
+    console.warn("save", content);
+    return /*#__PURE__*/React.createElement("div", {
+      className: "aquila-icon-heading"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "aquila-icon-heading__heading"
+    }), /*#__PURE__*/React.createElement(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+      tagName: "h4",
+      value: content
+    }));
   }
 });
 
@@ -40,6 +105,16 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!*************************************!*\
+  !*** external ["wp","blockEditor"] ***!
+  \*************************************/
+/***/ (function(module) {
+
+module.exports = window["wp"]["blockEditor"];
 
 /***/ }),
 
