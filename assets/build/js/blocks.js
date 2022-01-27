@@ -36,6 +36,11 @@ var layoutStyleButton = [{
   label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("White outline - to be used with dark background", "aquila")
 }];
 
+var deRegister = function deRegister() {
+  (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.unregisterBlockStyle)("core/quote", "large");
+  (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.unregisterBlockStyle)("core/button", "outline");
+};
+
 var register = function register() {
   layoutStyleQuote.forEach(function (layoutStyle) {
     return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockStyle)("core/quote", layoutStyle);
@@ -45,12 +50,13 @@ var register = function register() {
   });
 };
 /**
- * register styles on dom ready
+ * register and deregister styles on dom ready
  */
 
 
 wp.domReady(function () {
   register();
+  deRegister();
 });
 
 /***/ }),

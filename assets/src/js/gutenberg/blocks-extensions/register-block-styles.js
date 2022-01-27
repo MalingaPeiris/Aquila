@@ -2,7 +2,7 @@
  * Register block styles
  **/
 
-import { registerBlockStyle } from "@wordpress/blocks";
+import { registerBlockStyle, unregisterBlockStyle } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 
 /**
@@ -29,6 +29,11 @@ const layoutStyleButton = [
   },
 ];
 
+const deRegister = () => {
+  unregisterBlockStyle("core/quote", "large");
+  unregisterBlockStyle("core/button", "outline");
+};
+
 const register = () => {
   layoutStyleQuote.forEach((layoutStyle) =>
     registerBlockStyle("core/quote", layoutStyle)
@@ -40,9 +45,10 @@ const register = () => {
 };
 
 /**
- * register styles on dom ready
+ * register and deregister styles on dom ready
  */
 
 wp.domReady(() => {
   register();
+  deRegister();
 });
