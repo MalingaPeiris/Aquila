@@ -18,6 +18,7 @@ get_header();
                 endwhile;
             else : get_template_part('template-parts/content-none');
             endif;
+            get_template_part('template-parts/components/posts-carousel');
             ?>
 
         </div>

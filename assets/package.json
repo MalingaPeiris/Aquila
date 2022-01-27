@@ -33,6 +33,7 @@
     "@wordpress/data": "^6.1.5",
     "@wordpress/element": "^4.0.4",
     "@wordpress/hooks": "^3.2.2",
+    "copy-webpack-plugin": "^10.2.1",
     "sass": "^1.49.0"
   },
   "devDependencies": {
