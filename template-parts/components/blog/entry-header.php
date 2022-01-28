@@ -28,8 +28,8 @@ $has_post_thumbnail = get_the_post_thumbnail($the_post_id);
                     $the_post_id,
                     'featured-thumbnail',
                     [
-                        'sizes' => '(max-width: 350px) 233px, 233px',
-                        'class' => 'attachment-featured-large size-featured-image'
+                        'sizes' => '(max-width: 350px) 350px, 233px',
+                        'class' => 'attachment-featured large size-featured-image'
                     ]
                 )
                 ?>

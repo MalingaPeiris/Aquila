@@ -5,9 +5,11 @@
     }
     initiateCarousel() {
         $(".posts-carousel").slick({
-            autoplay: true,
-            autoplaySpeed:1000,
-      });
+          autoplay: true,
+          autoplaySpeed: 1000,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+        });
     }
   }
   new SlickCarousel();
