@@ -24,6 +24,7 @@
             $post_query->the_post();
     ?>
             <div class='card'>
+                <div class="thumbnail">
                 <?php
                 if (has_post_thumbnail()) {
                     the_post_thumbnail(
@@ -36,10 +37,10 @@
                     );
                 } else { ?>
                     <div><img src="https://via.placeholder.com/510x340" class="w-100" alt=""></div>
-                   
                 <?php
                 }
                 ?>
+                </div>
                 <div class="card-body">
                     <?php
                      the_title('<h3 class="card-title">', '</h3>');

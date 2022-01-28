@@ -926,6 +926,11 @@ object {
   font-size: 30px;
 }
 
+.thumbnail-photo {
+  height: 100px;
+  width: 100%;
+}
+
 /* Entry meta */
 .updated:not(.published) {
   display: none;
